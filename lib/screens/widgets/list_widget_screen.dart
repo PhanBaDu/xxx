@@ -1,3 +1,4 @@
+import 'package:context/core/constants/app_constants.dart';
 import 'package:context/core/theme/app_colors.dart';
 import 'package:context/core/widgets/button_arrow_left_widget.dart';
 import 'package:context/core/widgets/button_info_widget.dart';
@@ -14,7 +15,21 @@ class ListWidgetScreen extends StatelessWidget {
       title: const NavTitle(title: 'Features Page'),
       leading: ButtonArrowLeft(context: context),
       trailing: ButtonInfo(context: context),
-      child: Text('AA'),
+      child: Column(
+        spacing: AppConstants.spacingSm,
+        children: [
+          Container(height: 100, color: AppColors.primary),
+          Container(height: 100, color: AppColors.primary),
+          Container(height: 100, color: AppColors.primary),
+          Container(height: 100, color: AppColors.primary),
+          Container(height: 100, color: AppColors.primary),
+          Container(height: 100, color: AppColors.primary),
+          Container(height: 100, color: AppColors.primary),
+          Container(height: 100, color: AppColors.primary),
+          Container(height: 100, color: AppColors.primary),
+          Container(height: 100, color: AppColors.primary),
+        ],
+      ),
     );
   }
 }

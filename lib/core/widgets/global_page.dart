@@ -74,7 +74,7 @@ class GlobalPage extends StatefulWidget {
     required this.child,
     this.contentPadding = const EdgeInsets.symmetric(
       horizontal: 8,
-      vertical: 7,
+      vertical: 8,
     ),
     this.expandContent = false,
     this.bottomAction,
