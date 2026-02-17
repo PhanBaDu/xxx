@@ -17,8 +17,7 @@ class ListWidgetScreen extends StatelessWidget {
       leading: ButtonArrowLeft(context: context),
       trailing: ButtonInfo(context: context),
       bottomAction: ButtonPrimary(
-        title: 'Save Changes',
-        disabled: true,
+        title: 'Next',
         onPressed: () {
           print('Bottom action pressed');
         },
