@@ -2,6 +2,7 @@ import 'package:context/core/constants/app_constants.dart';
 import 'package:context/core/theme/app_colors.dart';
 import 'package:context/core/widgets/button_arrow_left_widget.dart';
 import 'package:context/core/widgets/button_info_widget.dart';
+import 'package:context/core/widgets/button_primary_widget.dart';
 import 'package:context/core/widgets/nav_title_widget.dart';
 import 'package:flutter/cupertino.dart';
 import '../../core/widgets/global_page.dart';
@@ -14,21 +15,26 @@ class ListWidgetScreen extends StatelessWidget {
     return GlobalPage(
       title: const NavTitle(title: 'Features Page'),
       leading: ButtonArrowLeft(context: context),
-
       trailing: ButtonInfo(context: context),
+      bottomAction: ButtonPrimary(
+        title: 'Save Changes',
+        onPressed: () {
+          print('Bottom action pressed');
+        },
+      ),
       child: Column(
         spacing: AppConstants.spacingSm,
         children: [
-          Container(height: 100, color: AppColors.primary),
-          Container(height: 100, color: AppColors.primary),
-          Container(height: 100, color: AppColors.primary),
-          Container(height: 100, color: AppColors.primary),
-          Container(height: 100, color: AppColors.primary),
-          Container(height: 100, color: AppColors.primary),
-          Container(height: 100, color: AppColors.primary),
-          Container(height: 100, color: AppColors.primary),
-          Container(height: 100, color: AppColors.primary),
-          Container(height: 100, color: AppColors.primary),
+          Container(height: 100, color: AppColors.border),
+          Container(height: 100, color: AppColors.border),
+          Container(height: 100, color: AppColors.border),
+          Container(height: 100, color: AppColors.border),
+          Container(height: 100, color: AppColors.border),
+          Container(height: 100, color: AppColors.border),
+          Container(height: 100, color: AppColors.border),
+          Container(height: 100, color: AppColors.border),
+          Container(height: 100, color: AppColors.border),
+          Container(height: 100, color: AppColors.border),
         ],
       ),
     );
