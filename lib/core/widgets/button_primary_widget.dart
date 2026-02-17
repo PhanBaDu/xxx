@@ -11,6 +11,7 @@ class ButtonPrimary extends StatelessWidget {
     this.color = AppColors.primary,
     this.textColor = CupertinoColors.white,
     this.borderRadius,
+    this.disabled = false,
   });
 
   final String title;
@@ -19,6 +20,7 @@ class ButtonPrimary extends StatelessWidget {
   final Color color;
   final Color textColor;
   final BorderRadius? borderRadius;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +32,13 @@ class ButtonPrimary extends StatelessWidget {
         child: CupertinoButton(
           padding: EdgeInsets.zero,
           color: color,
-          disabledColor: color.withOpacity(0.5),
+          disabledColor: AppColors.disabled,
           borderRadius: borderRadius ?? BorderRadius.circular(height),
-          onPressed: onPressed,
+          onPressed: disabled ? null : onPressed,
           child: Text(
             title,
             style: TextStyle(
-              color: textColor,
+              color: disabled ? AppColors.border : textColor,
               fontSize: AppConstants.base,
               fontWeight: FontWeight.w600,
             ),

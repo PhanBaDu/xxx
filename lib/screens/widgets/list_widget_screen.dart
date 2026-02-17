@@ -18,6 +18,7 @@ class ListWidgetScreen extends StatelessWidget {
       trailing: ButtonInfo(context: context),
       bottomAction: ButtonPrimary(
         title: 'Save Changes',
+        disabled: true,
         onPressed: () {
           print('Bottom action pressed');
         },
@@ -25,16 +26,16 @@ class ListWidgetScreen extends StatelessWidget {
       child: Column(
         spacing: AppConstants.spacingSm,
         children: [
-          Container(height: 100, color: AppColors.border),
-          Container(height: 100, color: AppColors.border),
-          Container(height: 100, color: AppColors.border),
-          Container(height: 100, color: AppColors.border),
-          Container(height: 100, color: AppColors.border),
-          Container(height: 100, color: AppColors.border),
-          Container(height: 100, color: AppColors.border),
-          Container(height: 100, color: AppColors.border),
-          Container(height: 100, color: AppColors.border),
-          Container(height: 100, color: AppColors.border),
+          Container(height: 100, color: AppColors.textLight),
+          Container(height: 100, color: AppColors.textLight),
+          Container(height: 100, color: AppColors.textLight),
+          Container(height: 100, color: AppColors.textLight),
+          Container(height: 100, color: AppColors.textLight),
+          Container(height: 100, color: AppColors.textLight),
+          Container(height: 100, color: AppColors.textLight),
+          Container(height: 100, color: AppColors.textLight),
+          Container(height: 100, color: AppColors.textLight),
+          Container(height: 100, color: AppColors.textLight),
         ],
       ),
     );
