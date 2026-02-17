@@ -14,6 +14,7 @@ class ListWidgetScreen extends StatelessWidget {
     return GlobalPage(
       title: const NavTitle(title: 'Features Page'),
       leading: ButtonArrowLeft(context: context),
+
       trailing: ButtonInfo(context: context),
       child: Column(
         spacing: AppConstants.spacingSm,

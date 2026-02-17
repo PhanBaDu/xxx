@@ -88,9 +88,9 @@ class GlobalPage extends StatefulWidget {
     this.allowPop = true,
     this.backgroundColor = AppColors.backgroundLight,
     this.header,
-    this.showScrollbar = true,
+    this.showScrollbar = false,
     this.useScrollView = true,
-    this.physics,
+    this.physics = const ClampingScrollPhysics(),
   });
 
   final Widget title;
