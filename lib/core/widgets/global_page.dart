@@ -43,7 +43,7 @@ import 'package:flutter/cupertino.dart';
 ///   * true: Cho phép back bình thường
 ///
 /// - [backgroundColor]: Màu nền của trang
-///   * Mặc định dùng systemBackground (tự động dark/light mode)
+///   * Mặc định là AppColors.backgroundLight
 ///
 /// - [header]: Widget header tùy chỉnh ngay dưới navigation bar
 ///   * Dùng cho tabs, filters, search bar...
@@ -64,8 +64,7 @@ import 'package:flutter/cupertino.dart';
 /// GlobalPage(
 ///   title: const NavTitle(title: 'Settings'),
 ///   child: YourContent(),
-///   trailing: ButtonInfo(context: context),
-///   navBorder: null, // Ẩn border
+///   backgroundColor: AppColors.backgroundDark, // Thay đổi màu nền
 /// )
 /// ```
 class GlobalPage extends StatefulWidget {
@@ -87,7 +86,7 @@ class GlobalPage extends StatefulWidget {
     this.floatingButton,
     this.scrollController,
     this.allowPop = true,
-    this.backgroundColor,
+    this.backgroundColor = AppColors.backgroundLight,
     this.header,
     this.showScrollbar = true,
     this.useScrollView = true,
@@ -106,7 +105,7 @@ class GlobalPage extends StatefulWidget {
   final Widget? floatingButton;
   final ScrollController? scrollController;
   final bool allowPop;
-  final Color? backgroundColor;
+  final Color backgroundColor;
   final bool showScrollbar;
   final bool useScrollView;
   final ScrollPhysics? physics;
@@ -202,9 +201,7 @@ class _GlobalPageState extends State<GlobalPage> {
     return PopScope(
       canPop: widget.allowPop,
       child: CupertinoPageScaffold(
-        backgroundColor:
-            widget.backgroundColor ??
-            CupertinoColors.systemBackground.resolveFrom(context),
+        backgroundColor: widget.backgroundColor,
         child: Stack(
           children: [
             Padding(
