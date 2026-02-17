@@ -3,10 +3,18 @@ import 'package:context/core/theme/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 
 class ButtonClose extends StatelessWidget {
-  const ButtonClose({super.key, required this.context, this.onPressed});
+  const ButtonClose({
+    super.key,
+    required this.context,
+    this.onPressed,
+    this.fontSize = AppConstants.base,
+    this.color = AppColors.destructive,
+  });
 
   final BuildContext context;
   final VoidCallback? onPressed;
+  final double fontSize;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +27,11 @@ class ButtonClose extends StatelessWidget {
             FocusScope.of(context).unfocus();
             Navigator.of(context).maybePop();
           },
-      child: const Text(
+      child: Text(
         'Close',
         style: TextStyle(
-          fontSize: AppConstants.base,
-          color: AppColors.destructive,
+          fontSize: fontSize,
+          color: color,
           fontWeight: FontWeight.w400,
         ),
       ),

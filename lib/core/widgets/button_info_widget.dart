@@ -3,10 +3,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ButtonInfo extends StatelessWidget {
-  const ButtonInfo({super.key, required this.context, this.onPressed});
+  const ButtonInfo({
+    super.key,
+    required this.context,
+    this.onPressed,
+    this.width = 24,
+    this.height = 24,
+    this.color = AppColors.info,
+  });
 
   final BuildContext context;
   final VoidCallback? onPressed;
+  final double width;
+  final double height;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +26,9 @@ class ButtonInfo extends StatelessWidget {
       onPressed: onPressed,
       child: SvgPicture.asset(
         'assets/icons/info.svg',
-        width: 24,
-        height: 24,
-        colorFilter: const ColorFilter.mode(AppColors.info, BlendMode.srcIn),
+        width: width,
+        height: height,
+        colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
       ),
     );
   }

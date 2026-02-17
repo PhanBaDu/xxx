@@ -3,10 +3,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ButtonArrowLeft extends StatelessWidget {
-  const ButtonArrowLeft({super.key, required this.context, this.onPressed});
+  const ButtonArrowLeft({
+    super.key,
+    required this.context,
+    this.onPressed,
+    this.width = 24,
+    this.height = 24,
+    this.color = AppColors.textLight,
+  });
 
   final BuildContext context;
   final VoidCallback? onPressed;
+  final double width;
+  final double height;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +31,9 @@ class ButtonArrowLeft extends StatelessWidget {
           },
       child: SvgPicture.asset(
         'assets/icons/arrow_left.svg',
-        width: 24,
-        height: 24,
-        colorFilter: ColorFilter.mode(AppColors.textLight, BlendMode.srcIn),
+        width: width,
+        height: height,
+        colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
       ),
     );
   }
