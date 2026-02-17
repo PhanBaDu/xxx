@@ -9,10 +9,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 /// - [title] (required): Tiêu đề hiển thị ở giữa navigation bar
 /// - [child] (required): Nội dung chính của trang
 ///
-/// - [showBackArrow]: Hiển thị mũi tên back hay text "Close" (default: true)
-///   * true: Hiện icon back arrow
-///   * false: Hiện text "Close"
-///
 /// - [contentPadding]: Padding cho nội dung (default: 16px ngang & dọc)
 ///   * Điều chỉnh khoảng cách giữa nội dung và viền màn hình
 ///
@@ -28,8 +24,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 ///   * Thường dùng cho nút "Edit", "Done", icon settings...
 ///
 /// - [leading]: Widget bên trái navigation bar (vị trí góc trái)
-///   * Override nút back/close mặc định
-///   * Dùng khi muốn custom hoàn toàn nút bên trái
+///   * Truyền widget tùy chỉnh cho nút bên trái
+///   * Nếu không truyền, sẽ hiển thị nút back mặc định
 ///
 /// - [floatingButton]: Floating button ở dưới cùng (bên trái bottomAction)
 ///   * Hiển thị cùng với bottomAction
@@ -74,7 +70,6 @@ class GlobalPage extends StatefulWidget {
     super.key,
     required this.title,
     required this.child,
-    this.showBackArrow = true,
     this.contentPadding = const EdgeInsets.symmetric(
       horizontal: 8,
       vertical: 7,
@@ -96,7 +91,6 @@ class GlobalPage extends StatefulWidget {
   final String title;
   final Widget child;
   final Widget? header;
-  final bool showBackArrow;
   final EdgeInsets contentPadding;
   final bool expandContent;
   final Widget? bottomAction;
@@ -225,7 +219,7 @@ class _GlobalPageState extends State<GlobalPage> {
             ),
             Container(
               height: navHeight,
-              padding: EdgeInsets.only(left: 16, right: 16, top: topInset),
+              padding: EdgeInsets.only(left: 20, right: 20, top: topInset),
               decoration: BoxDecoration(
                 color: CupertinoColors.systemBackground.resolveFrom(context),
                 border: Border(
@@ -265,23 +259,15 @@ class _GlobalPageState extends State<GlobalPage> {
                                         FocusScope.of(context).unfocus();
                                         Navigator.of(context).maybePop();
                                       },
-                                      child: widget.showBackArrow
-                                          ? SvgPicture.asset(
-                                              'assets/icons/arrow_left.svg',
-                                              width: 24,
-                                              height: 24,
-                                              colorFilter: ColorFilter.mode(
-                                                AppColors.textLight,
-                                                BlendMode.srcIn,
-                                              ),
-                                            )
-                                          : const Text(
-                                              'Close',
-                                              style: TextStyle(
-                                                fontSize: 17,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
+                                      child: SvgPicture.asset(
+                                        'assets/icons/arrow_left.svg',
+                                        width: 24,
+                                        height: 24,
+                                        colorFilter: ColorFilter.mode(
+                                          AppColors.textLight,
+                                          BlendMode.srcIn,
+                                        ),
+                                      ),
                                     )
                                   : const SizedBox.shrink()),
                         ),
