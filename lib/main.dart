@@ -49,7 +49,11 @@ class HomePage extends StatelessWidget {
                 CupertinoScaffold.showCupertinoModalBottomSheet(
                   context: pageContext,
                   expand: true,
-                  builder: (context) => const ListWidgetScreen(),
+                  builder: (context) => Navigator(
+                    onGenerateRoute: (settings) => CupertinoPageRoute(
+                      builder: (context) => const ListWidgetScreen(),
+                    ),
+                  ),
                 );
               },
               child: const Text('Open Bottom Sheet'),

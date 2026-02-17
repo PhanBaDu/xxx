@@ -25,7 +25,7 @@ class ButtonClose extends StatelessWidget {
           onPressed ??
           () {
             FocusScope.of(context).unfocus();
-            Navigator.of(context).maybePop();
+            Navigator.of(context, rootNavigator: true).pop();
           },
       child: Text(
         'Close',

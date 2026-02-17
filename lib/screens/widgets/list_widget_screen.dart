@@ -1,6 +1,7 @@
 import 'package:context/core/constants/app_constants.dart';
 import 'package:context/core/theme/app_colors.dart';
 import 'package:context/core/widgets/button_arrow_left_widget.dart';
+import 'package:context/core/widgets/button_close_widget.dart';
 import 'package:context/core/widgets/button_info_widget.dart';
 import 'package:context/core/widgets/button_primary_widget.dart';
 import 'package:context/core/widgets/nav_title_widget.dart';
@@ -14,12 +15,14 @@ class ListWidgetScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlobalPage(
       title: const NavTitle(title: 'Features Page'),
-      leading: ButtonArrowLeft(context: context),
+      leading: ButtonClose(context: context),
       trailing: ButtonInfo(context: context),
       bottomAction: ButtonPrimary(
         title: 'Next',
         onPressed: () {
-          print('Bottom action pressed');
+          Navigator.of(context).push(
+            CupertinoPageRoute(builder: (context) => const ListWidgetScreen()),
+          );
         },
       ),
       child: Column(
