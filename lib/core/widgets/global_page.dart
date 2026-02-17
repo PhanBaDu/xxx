@@ -1,4 +1,3 @@
-import 'package:context/core/constants/app_constants.dart';
 import 'package:context/core/theme/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 /// GlobalPage - Widget trang toàn cục với navigation bar tùy chỉnh
 ///
 /// Props:
-/// - [title] (required): Tiêu đề hiển thị ở giữa navigation bar
+/// - [title] (required): Widget tiêu đề hiển thị ở giữa navigation bar
 /// - [child] (required): Nội dung chính của trang
 ///
 /// - [contentPadding]: Padding cho nội dung (default: 16px ngang & dọc)
@@ -22,6 +21,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 ///
 /// - [trailing]: Widget bên phải navigation bar (vị trí góc phải)
 ///   * Thường dùng cho nút "Edit", "Done", icon settings...
+///   * Để hiển thị text "Close" đỏ, dùng ButtonClose(context: context)
 ///
 /// - [leading]: Widget bên trái navigation bar (vị trí góc trái)
 ///   * Truyền widget tùy chỉnh cho nút bên trái
@@ -59,7 +59,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 /// Ví dụ sử dụng:
 /// ```dart
 /// GlobalPage(
-///   title: 'Settings',
+///   title: NavTitle(title: 'Settings'),
 ///   child: YourContent(),
 ///   trailing: Icon(CupertinoIcons.settings),
 ///   bottomAction: CupertinoButton(child: Text('Save'), onPressed: () {}),
@@ -88,7 +88,7 @@ class GlobalPage extends StatefulWidget {
     this.physics,
   });
 
-  final String title;
+  final Widget title;
   final Widget child;
   final Widget? header;
   final EdgeInsets contentPadding;
@@ -229,18 +229,7 @@ class _GlobalPageState extends State<GlobalPage> {
               child: Stack(
                 children: [
                   // Title ở center tuyệt đối
-                  Positioned.fill(
-                    child: Center(
-                      child: Text(
-                        widget.title,
-                        style: const TextStyle(
-                          fontSize: AppConstants.base,
-                          color: AppColors.textLight,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ),
+                  Positioned.fill(child: Center(child: widget.title)),
                   // Leading và Trailing
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
