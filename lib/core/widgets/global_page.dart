@@ -1,6 +1,6 @@
 import 'package:context/core/theme/app_colors.dart';
+import 'package:context/core/widgets/button_arrow_left_widget.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 /// GlobalPage - Widget trang toàn cục với navigation bar tùy chỉnh
 ///
@@ -25,10 +25,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 ///
 /// - [leading]: Widget bên trái navigation bar (vị trí góc trái)
 ///   * Truyền widget tùy chỉnh cho nút bên trái
-///   * Nếu không truyền, sẽ hiển thị nút back mặc định
+///   * Nếu không truyền, sẽ hiển thị nút back mặc định (ButtonArrowLeft)
+///
+/// - [navBorder]: Tùy chỉnh border cho navigation bar (default: border bottom 0.5px)
+///   * Nếu truyền null, border sẽ bị ẩn hoàn toàn
 ///
 /// - [floatingButton]: Floating button ở dưới cùng (bên trái bottomAction)
-///   * Hiển thị cùng với bottomAction
+///   * Hiển thị cùng with bottomAction
 ///   * Thường dùng cho action phụ
 ///
 /// - [scrollController]: ScrollController tùy chỉnh để điều khiển scroll
@@ -59,10 +62,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 /// Ví dụ sử dụng:
 /// ```dart
 /// GlobalPage(
-///   title: NavTitle(title: 'Settings'),
+///   title: const NavTitle(title: 'Settings'),
 ///   child: YourContent(),
-///   trailing: Icon(CupertinoIcons.settings),
-///   bottomAction: CupertinoButton(child: Text('Save'), onPressed: () {}),
+///   trailing: ButtonInfo(context: context),
+///   navBorder: null, // Ẩn border
 /// )
 /// ```
 class GlobalPage extends StatefulWidget {
@@ -78,6 +81,9 @@ class GlobalPage extends StatefulWidget {
     this.bottomAction,
     this.trailing,
     this.leading,
+    this.navBorder = const Border(
+      bottom: BorderSide(color: Color(0xFFE2E8F0), width: 0.5),
+    ),
     this.floatingButton,
     this.scrollController,
     this.allowPop = true,
@@ -96,6 +102,7 @@ class GlobalPage extends StatefulWidget {
   final Widget? bottomAction;
   final Widget? trailing;
   final Widget? leading;
+  final Border? navBorder;
   final Widget? floatingButton;
   final ScrollController? scrollController;
   final bool allowPop;
@@ -222,9 +229,7 @@ class _GlobalPageState extends State<GlobalPage> {
               padding: EdgeInsets.only(left: 20, right: 20, top: topInset),
               decoration: BoxDecoration(
                 color: CupertinoColors.systemBackground.resolveFrom(context),
-                border: Border(
-                  bottom: BorderSide(color: Color(0xFFE2E8F0), width: 0.5),
-                ),
+                border: widget.navBorder,
               ),
               child: Stack(
                 children: [
@@ -241,23 +246,7 @@ class _GlobalPageState extends State<GlobalPage> {
                           child:
                               widget.leading ??
                               (widget.allowPop
-                                  ? CupertinoButton(
-                                      padding: EdgeInsets.zero,
-                                      minimumSize: Size.zero,
-                                      onPressed: () {
-                                        FocusScope.of(context).unfocus();
-                                        Navigator.of(context).maybePop();
-                                      },
-                                      child: SvgPicture.asset(
-                                        'assets/icons/arrow_left.svg',
-                                        width: 24,
-                                        height: 24,
-                                        colorFilter: ColorFilter.mode(
-                                          AppColors.textLight,
-                                          BlendMode.srcIn,
-                                        ),
-                                      ),
-                                    )
+                                  ? ButtonArrowLeft(context: context)
                                   : const SizedBox.shrink()),
                         ),
                       ),
