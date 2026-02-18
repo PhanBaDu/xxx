@@ -13,7 +13,7 @@ class NavTitle extends StatelessWidget {
       title,
       style: const TextStyle(
         fontSize: AppConstants.base,
-        color: AppColors.textLight,
+        color: AppColors.text,
         fontWeight: FontWeight.w600,
       ),
     );

@@ -7,6 +7,6 @@ extension ThemeExtension on BuildContext {
   }
 
   Color get background {
-    return isDarkMode ? AppColors.backgroundDark : AppColors.backgroundLight;
+    return AppColors.background;
   }
 }

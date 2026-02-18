@@ -23,25 +23,48 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Context App',
       theme: _isDarkMode ? AppTheme.darkTheme : AppTheme.lightTheme,
-      home: const HomePage(),
+      home: HomePage(
+        isDarkMode: _isDarkMode,
+        onToggleTheme: () {
+          setState(() {
+            _isDarkMode = !_isDarkMode;
+          });
+        },
+      ),
     );
   }
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+    required this.isDarkMode,
+    required this.onToggleTheme,
+  });
+
+  final bool isDarkMode;
+  final VoidCallback onToggleTheme;
 
   @override
   Widget build(BuildContext context) {
     return CupertinoScaffold(
       body: Builder(
         builder: (pageContext) => CupertinoPageScaffold(
-          navigationBar: const CupertinoNavigationBar(
-            backgroundColor: CupertinoColors.white,
+          navigationBar: CupertinoNavigationBar(
+            backgroundColor: CupertinoColors.systemBackground.resolveFrom(
+              context,
+            ),
             transitionBetweenRoutes: false,
             automaticBackgroundVisibility: false,
             border: null,
-            middle: Text('Home'),
+            middle: const Text('Home'),
+            trailing: CupertinoButton(
+              padding: EdgeInsets.zero,
+              onPressed: onToggleTheme,
+              child: Icon(
+                isDarkMode ? CupertinoIcons.sun_max : CupertinoIcons.moon_fill,
+              ),
+            ),
           ),
           child: Center(
             child: CupertinoButton.filled(

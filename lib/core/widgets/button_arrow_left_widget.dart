@@ -9,7 +9,7 @@ class ButtonArrowLeft extends StatelessWidget {
     this.onPressed,
     this.width = 24,
     this.height = 24,
-    this.color = AppColors.textLight,
+    this.color = AppColors.text,
   });
 
   final BuildContext context;

@@ -81,16 +81,16 @@ class GlobalPage extends StatefulWidget {
     this.trailing,
     this.leading,
     this.navBorder = const Border(
-      bottom: BorderSide(color: Color(0xFFE2E8F0), width: 0.5),
+      bottom: BorderSide(color: AppColors.border, width: 0.5),
     ),
     this.floatingButton,
     this.scrollController,
     this.allowPop = true,
-    this.backgroundColor = AppColors.backgroundLight,
+    this.backgroundColor = AppColors.background,
     this.header,
     this.showScrollbar = false,
     this.useScrollView = true,
-    this.physics = const ClampingScrollPhysics(),
+    this.physics,
   });
 
   final Widget title;
@@ -115,7 +115,6 @@ class GlobalPage extends StatefulWidget {
 }
 
 class _GlobalPageState extends State<GlobalPage> {
-  static const double _toolbarHeight = 60;
   late ScrollController _scrollController;
   late bool _ownsController;
 
@@ -196,7 +195,7 @@ class _GlobalPageState extends State<GlobalPage> {
   @override
   Widget build(BuildContext context) {
     final double topInset = MediaQuery.of(context).padding.top;
-    final double navHeight = _toolbarHeight + topInset;
+    final double navHeight = 60 + topInset;
 
     return PopScope(
       canPop: widget.allowPop,

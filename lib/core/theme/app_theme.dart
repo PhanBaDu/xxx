@@ -7,24 +7,18 @@ class AppTheme {
   static CupertinoThemeData lightTheme = const CupertinoThemeData(
     brightness: Brightness.light,
     primaryColor: AppColors.primary,
-    scaffoldBackgroundColor: AppColors.backgroundLight,
+    scaffoldBackgroundColor: AppColors.background,
     textTheme: CupertinoTextThemeData(
-      textStyle: TextStyle(
-        color: AppColors.textLight,
-        fontSize: 17,
-      ),
+      textStyle: TextStyle(color: AppColors.text, fontSize: 17),
     ),
   );
 
   static CupertinoThemeData darkTheme = const CupertinoThemeData(
     brightness: Brightness.dark,
     primaryColor: AppColors.primary,
-    scaffoldBackgroundColor: AppColors.backgroundDark,
+    scaffoldBackgroundColor: AppColors.background,
     textTheme: CupertinoTextThemeData(
-      textStyle: TextStyle(
-        color: AppColors.textDark,
-        fontSize: 17,
-      ),
+      textStyle: TextStyle(color: AppColors.text, fontSize: 17),
     ),
   );
 }
