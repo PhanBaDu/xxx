@@ -10,8 +10,8 @@ class AppColors {
   // Dynamic Background
   static const CupertinoDynamicColor background =
       CupertinoDynamicColor.withBrightness(
-        color: Color(0xFFF6F7F9),
-        darkColor: Color(0xFF000000),
+        color: backgroundLight,
+        darkColor: backgroundDark,
       );
 
   // Dynamic Text
