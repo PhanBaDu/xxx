@@ -1,43 +1,94 @@
 import 'package:flutter/cupertino.dart';
+import 'light_colors.dart';
+import 'dark_colors.dart';
 
 class AppColors {
   AppColors._();
 
-  static const Color primary = Color(0xFFFF637E);
-  static const Color destructive = Color(0xFFDC2626);
-  static const Color info = Color(0xFF94A3B8);
-
   // Dynamic Background
   static const CupertinoDynamicColor background =
       CupertinoDynamicColor.withBrightness(
-        color: backgroundLight,
-        darkColor: backgroundDark,
+        color: LightColors.backgroundLight,
+        darkColor: DarkColors.backgroundDark,
       );
 
-  // Dynamic Text
-  static const CupertinoDynamicColor text =
+  // Dynamic Foreground
+  static const CupertinoDynamicColor foreground =
       CupertinoDynamicColor.withBrightness(
-        color: Color(0xFF0F172A),
-        darkColor: Color(0xFFFFFFFF),
+        color: LightColors.foregroundLight,
+        darkColor: DarkColors.foregroundDark,
+      );
+
+  // Dynamic Card
+  static const CupertinoDynamicColor card =
+      CupertinoDynamicColor.withBrightness(
+        color: LightColors.cardLight,
+        darkColor: DarkColors.cardDark,
+      );
+
+  // Dynamic Card Foreground
+  static const CupertinoDynamicColor cardForeground =
+      CupertinoDynamicColor.withBrightness(
+        color: LightColors.cardForegroundLight,
+        darkColor: DarkColors.cardForegroundDark,
+      );
+
+  // Dynamic Primary
+  static const CupertinoDynamicColor primary =
+      CupertinoDynamicColor.withBrightness(
+        color: LightColors.primaryLight,
+        darkColor: DarkColors.primaryDark,
+      );
+
+  // Dynamic Primary Foreground
+  static const CupertinoDynamicColor primaryForeground =
+      CupertinoDynamicColor.withBrightness(
+        color: LightColors.primaryForegroundLight,
+        darkColor: DarkColors.primaryForegroundDark,
+      );
+
+  // Dynamic Secondary
+  static const CupertinoDynamicColor secondary =
+      CupertinoDynamicColor.withBrightness(
+        color: LightColors.secondaryLight,
+        darkColor: DarkColors.secondaryDark,
+      );
+
+  // Dynamic Muted
+  static const CupertinoDynamicColor muted =
+      CupertinoDynamicColor.withBrightness(
+        color: LightColors.mutedLight,
+        darkColor: DarkColors.mutedDark,
+      );
+
+  // Dynamic Muted Foreground
+  static const CupertinoDynamicColor mutedForeground =
+      CupertinoDynamicColor.withBrightness(
+        color: LightColors.mutedForegroundLight,
+        darkColor: DarkColors.mutedForegroundDark,
+      );
+
+  // Dynamic Destructive
+  static const CupertinoDynamicColor destructive =
+      CupertinoDynamicColor.withBrightness(
+        color: LightColors.destructiveLight,
+        darkColor: DarkColors.destructiveDark,
       );
 
   // Dynamic Border
   static const CupertinoDynamicColor border =
       CupertinoDynamicColor.withBrightness(
-        color: Color(0xFFE2E8F0),
-        darkColor: Color(0xFF1E293B),
+        color: LightColors.borderLight,
+        darkColor: DarkColors.borderDark,
       );
 
-  // Dynamic Disabled
-  static const CupertinoDynamicColor disabled =
+  // Dynamic Ring
+  static const CupertinoDynamicColor ring =
       CupertinoDynamicColor.withBrightness(
-        color: Color(0xFFF8FAFC),
-        darkColor: Color(0xFF0F172A),
+        color: LightColors.ringLight,
+        darkColor: DarkColors.ringDark,
       );
 
-  // Legacy/Reference colors (unmodified for backward compatibility if needed)
-  static const Color backgroundLight = Color(0xFFF6F7F9);
-  static const Color backgroundDark = Color(0xFF000000);
-  static const Color textLight = Color(0xFF0F172A);
-  static const Color textDark = Color(0xFFFFFFFF);
+  // Backward compatibility aliases (if needed)
+  static const CupertinoDynamicColor text = foreground;
 }
